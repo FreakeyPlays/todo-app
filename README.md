@@ -68,14 +68,14 @@ foo@bar:~$ git clone https://github.com/FreakeyPlays/vs-lab.git
 
 ## 🧰 - Environment variables
 
-| Name                | Type     | Description                                                            | Deafault    |
-| :------------------ | :------- | :--------------------------------------------------------------------- | ----------- |
-| `HOST`              | `string` | The Host of the Application.</br>**Example:** `localhost or 127.0.0.1` | `localhost` |
-| `POSTGRES_PORT`     | `number` | The Port of the PostgresSQL Database.</br>**Example:** `4321`          | `5432`      |
-| `POSTGRES_USER`     | `string` | The Username of the PostgresSQL Database.</br>**Example:** `user`      | `postgres`  |
-| `POSTGRES_PASSWORD` | `string` | The Password of the PostgresSQL Database.</br>**Example:** `root`      | `password`  |
-| `POSTGRES_DB`       | `string` | The Name of the PostgresSQL Database.</br>**Example:** `todo_db`       | `postgres`  |
-| `NODE_ENV`          | `string` | The Name of the NodeJD Enviroment.</br>**Example:** `development`      |             |
+| Name                | Type     | Description                                                            | Default       |
+| :------------------ | :------- | :--------------------------------------------------------------------- | ------------- |
+| `DB_HOST_NAME`      | `string` | The Hostname of the Database Container.</br>**Example:** `postgres-db` | `postgres-db` |
+| `POSTGRES_PORT`     | `number` | The Port of the PostgresSQL Database.</br>**Example:** `5432`          | `5432`        |
+| `POSTGRES_USER`     | `string` | The Username of the PostgresSQL Database.</br>**Example:** `user`      | `postgres`    |
+| `POSTGRES_PASSWORD` | `string` | The Password of the PostgresSQL Database.</br>**Example:** `root`      | `password`    |
+| `POSTGRES_DB`       | `string` | The Name of the PostgresSQL Database.</br>**Example:** `todo_db`       | `postgres`    |
+| `NODE_ENV`          | `string` | The Name of the NodeJD Environment.</br>**Example:** `development`     |               |
 
 ## ⛓️ - API
 
@@ -90,12 +90,12 @@ To read more about the Todo API run the Project and visit `/api` to see the swag
 POST /todo Content-Type: application/json {"label": "new ToDo", ...}
 ```
 
-| Parameter  | Type      | Description                                                               |
-| :--------- | :-------- | :------------------------------------------------------------------------ |
-| `label`    | `string`  | **Required**.</br>The Label of the ToDo.                                  |
-| `position` | `number`  | **Required**.</br>The Position of the ToDo.                               |
-| `priority` | `number`  | **Optional**.</br>**Deafault:** `5`.</br>The Priority of the ToDo (0-10). |
-| `done`     | `boolean` | **Optional**.</br>**Deafault:** `false`.</br>The status of the ToDo.      |
+| Parameter  | Type      | Description                                                              |
+| :--------- | :-------- | :----------------------------------------------------------------------- |
+| `label`    | `string`  | **Required**.</br>The Label of the ToDo.                                 |
+| `position` | `number`  | **Required**.</br>The Position of the ToDo.                              |
+| `priority` | `number`  | **Optional**.</br>**Default:** `5`.</br>The Priority of the ToDo (0-10). |
+| `done`     | `boolean` | **Optional**.</br>**Default:** `false`.</br>The status of the ToDo.      |
 
 #### 📤 - Response
 
