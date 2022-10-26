@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common'
 import { ApiBody, ApiTags } from '@nestjs/swagger'
 import { DeleteResult, InsertResult, UpdateResult } from 'typeorm'
+import { Todo } from '../models/todo.entity'
 import { T_Todo } from '../models/todo.interface'
 import { TodoService } from '../service/todo.service'
 
@@ -39,7 +40,7 @@ export class TodoController {
     }
   })
   @Post()
-  public createTodo(@Body() todo: T_Todo): Promise<InsertResult> {
+  public createTodo(@Body() todo: T_Todo): Promise<T_Todo> {
     return this.service.addOne(todo)
   }
 

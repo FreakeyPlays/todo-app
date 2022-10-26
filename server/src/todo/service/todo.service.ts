@@ -11,19 +11,8 @@ export class TodoService {
     private todoRepository: Repository<Todo>
   ) {}
 
-  addOne(todo: T_Todo): Promise<InsertResult> {
-    return this.todoRepository
-      .createQueryBuilder()
-      .insert()
-      .into(Todo)
-      .values([
-        {
-          label: todo.label,
-          priority: todo.priority ? todo.priority : undefined,
-          done: todo.done ? todo.done : undefined
-        }
-      ])
-      .execute()
+  addOne(todo: T_Todo): Promise<Todo> {
+    return this.todoRepository.save<Todo>(todo)
   }
 
   findAll(): Promise<T_Todo[]> {
@@ -35,16 +24,7 @@ export class TodoService {
   }
 
   updateOne(id: number, todo: T_Todo): Promise<UpdateResult> {
-    return this.todoRepository
-      .createQueryBuilder()
-      .update(Todo)
-      .set({
-        label: todo.label,
-        priority: todo.priority,
-        done: todo.done
-      })
-      .where('id = :id', { id })
-      .execute()
+    return this.todoRepository.update(id, todo)
   }
 
   async removeOne(id: number): Promise<DeleteResult> {
