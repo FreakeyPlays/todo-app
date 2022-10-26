@@ -4,4 +4,5 @@ export interface T_Todo {
   label: string
   priority: number
   done: boolean
+  position: number
 }

@@ -14,4 +14,7 @@ export class Todo {
 
   @Column({ default: false })
   public done: boolean
+
+  @Column()
+  public position: number
 }

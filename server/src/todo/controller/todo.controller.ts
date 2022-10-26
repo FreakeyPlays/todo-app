@@ -9,8 +9,7 @@ import {
   Put
 } from '@nestjs/common'
 import { ApiBody, ApiTags } from '@nestjs/swagger'
-import { DeleteResult, InsertResult, UpdateResult } from 'typeorm'
-import { Todo } from '../models/todo.entity'
+import { DeleteResult, UpdateResult } from 'typeorm'
 import { T_Todo } from '../models/todo.interface'
 import { TodoService } from '../service/todo.service'
 
@@ -35,6 +34,10 @@ export class TodoController {
           description: 'The Status of the Todo',
           type: 'boolean',
           default: false
+        },
+        position: {
+          description: 'The Position of the Todo',
+          type: 'number'
         }
       }
     }
@@ -66,6 +69,10 @@ export class TodoController {
         done: {
           description: 'The Status of the Todo',
           type: 'boolean'
+        },
+        position: {
+          description: 'The Position of the Todo',
+          type: 'number'
         }
       }
     }
