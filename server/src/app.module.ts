@@ -9,7 +9,7 @@ import { TodoModule } from './todo/todo.module'
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST_NAME || 'localhost',
+      host: process.env.DB_HOST_NAME || 'postgres-db',
       port: parseInt(process.env.POSTGRES_PORT) || 54321,
       username: process.env.POSTGRES_USER || 'postgres',
       password: process.env.POSTGRES_PASSWORD || 'password',
