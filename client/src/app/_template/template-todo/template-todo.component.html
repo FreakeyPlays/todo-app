@@ -1,0 +1,48 @@
+<div class="todo" [class.done]="toDo.done">
+  <div class="todo-content">
+    <div class="todo-dnd-handle">
+      <img src="./assets/svg/drag.svg" alt="Drag and Drop Handle" />
+    </div>
+    <div class="todo-status-check">
+      <img
+        src="./assets/svg/checkbox.svg"
+        alt="Empty Checkbox Icon"
+        *ngIf="!toDo.done"
+        (click)="switchToDoDone($event)"
+      />
+      <img
+        src="./assets/svg/checkbox-checked.svg"
+        alt="Done Checkbox Icon"
+        *ngIf="toDo.done"
+        (click)="switchToDoDone($event)"
+      />
+    </div>
+    <div
+      class="todo-content-inputs"
+      (dblclick)="!toDo.done ? (editToDo = true) : null"
+      (blur)="editToDo = false"
+    >
+      <input
+        type="text"
+        placeholder="Title of the ToDo"
+        [disabled]="toDo.done"
+        [(ngModel)]="toDo.label"
+        [readonly]="!editToDo"
+      />
+      <span class="todo-content-input-divider"></span>
+      <select [(ngModel)]="toDo.priority" [disabled]="!editToDo">
+        <option *ngFor="let priority of priorityOptions" value="{{ priority }}">
+          {{ priority }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="todo-delete" (click)="deleteToDo($event)" *ngIf="!editToDo">
+    <img src="./assets/svg/delete.svg" alt="Delete ToDo" />
+    <span>Delete</span>
+  </div>
+  <div class="todo-update" (click)="updateToDo($event)" *ngIf="editToDo">
+    <img src="./assets/svg/update.svg" alt="Update ToDo" />
+    <span>Update</span>
+  </div>
+</div>
