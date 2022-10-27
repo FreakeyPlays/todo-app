@@ -1,0 +1,19 @@
+<div class="todo-form">
+  <div class="todo-content">
+    <input
+      type="text"
+      [(ngModel)]="newToDo.label"
+      (keyup.enter)="createNewToDo($event)"
+      placeholder="Label of the ToDo"
+    />
+    <span class="todo-input-divider"></span>
+    <select [(ngModel)]="newToDo.priority">
+      <option *ngFor="let priority of priorityOptions" value="{{ priority }}">
+        {{ priority }}
+      </option>
+    </select>
+  </div>
+  <div class="todo-create" (click)="createNewToDo($event)">
+    <span>Create</span>
+  </div>
+</div>
