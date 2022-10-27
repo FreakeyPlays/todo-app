@@ -1,0 +1,24 @@
+<app-template-header></app-template-header>
+<div class="list-view">
+  <app-template-todo-form></app-template-todo-form>
+
+  <h4 (click)="showOpenToDos = !showOpenToDos">
+    Open <span>({{ openToDos.length }})</span>
+  </h4>
+  <div class="todo-entry-list" *ngIf="showOpenToDos">
+    <app-template-todo
+      *ngFor="let openToDo of openToDos"
+      [toDo]="openToDo"
+    ></app-template-todo>
+  </div>
+
+  <h4 (click)="showDoneToDos = !showDoneToDos">
+    Done <span>({{ doneToDos.length }})</span>
+  </h4>
+  <div class="todo-entry-list" *ngIf="showDoneToDos">
+    <app-template-todo
+      *ngFor="let doneToDo of doneToDos"
+      [toDo]="doneToDo"
+    ></app-template-todo>
+  </div>
+</div>
