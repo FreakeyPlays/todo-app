@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
@@ -22,7 +23,8 @@ import { TemplateTodoComponent } from './_template/template-todo/template-todo.c
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    DragulaModule.forRoot()
+    DragulaModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
