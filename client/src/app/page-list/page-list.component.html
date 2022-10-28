@@ -1,6 +1,6 @@
 <app-template-header></app-template-header>
 <div class="list-view">
-  <app-template-todo-form></app-template-todo-form>
+  <app-template-todo-form (ping)="createToDo($event)"></app-template-todo-form>
 
   <h4 (click)="showOpenToDos = !showOpenToDos">
     Open <span>({{ openToDos.length }})</span>
@@ -13,6 +13,7 @@
     (dragulaModelChange)="openToDos = $event"
   >
     <app-template-todo
+      (ping)="updateToDo($event)"
       *ngFor="let openToDo of openToDos"
       [toDo]="openToDo"
     ></app-template-todo>
@@ -23,6 +24,7 @@
   </h4>
   <div class="todo-entry-list" *ngIf="showDoneToDos">
     <app-template-todo
+      (ping)="updateToDo($event)"
       *ngFor="let doneToDo of doneToDos"
       [toDo]="doneToDo"
     ></app-template-todo>

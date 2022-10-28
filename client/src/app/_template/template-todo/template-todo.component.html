@@ -8,13 +8,13 @@
         src="./assets/svg/checkbox.svg"
         alt="Empty Checkbox Icon"
         *ngIf="!toDo.done"
-        (click)="switchToDoDone($event)"
+        (click)="checkToDo($event)"
       />
       <img
         src="./assets/svg/checkbox-checked.svg"
         alt="Done Checkbox Icon"
         *ngIf="toDo.done"
-        (click)="switchToDoDone($event)"
+        (click)="checkToDo($event)"
       />
     </div>
     <div
