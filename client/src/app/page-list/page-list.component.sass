@@ -1,0 +1,28 @@
+@import "../../sass/_var"
+
+.list-view
+  width: 100%
+  padding: 0 $cube*2
+
+  h4
+    font-family: $font1
+    font-size: $cube*3
+    color: $white
+    margin: 0 0 $cube*2 0
+    padding: 0
+    font-weight: regular
+    transition: all .3s
+    cursor: pointer
+    width: fit-content
+
+    span
+      font-size: $cube*1.5
+
+  h4:hover
+    color: $prime
+
+  .todo-entry-list
+    width: 100%
+    marging: 0
+    display: flex
+    flex-flow: column
