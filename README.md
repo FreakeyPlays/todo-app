@@ -136,12 +136,12 @@ To read more about the Todo API run the Project and visit `/api` to see the swag
 POST /todo Content-Type: application/json {"label": "new ToDo", ...}
 ```
 
-| Parameter  | Type      | Description                                                               |
-| :--------- | :-------- | :------------------------------------------------------------------------ |
-| `label`    | `string`  | **Required**.</br>The Label of the ToDo.                                  |
-| `position` | `number`  | **Required**.</br>The Position of the ToDo.                               |
-| `priority` | `number`  | **Optional**.</br>**Deafault:** `5`.</br>The Priority of the ToDo (0-10). |
-| `done`     | `boolean` | **Optional**.</br>**Deafault:** `false`.</br>The status of the ToDo.      |
+| Parameter  | Type      | Description                                                              |
+| :--------- | :-------- | :----------------------------------------------------------------------- |
+| `label`    | `string`  | **Required**.</br>The Label of the ToDo.                                 |
+| `position` | `number`  | **Required**.</br>The Position of the ToDo.                              |
+| `priority` | `number`  | **Optional**.</br>**Default:** `5`.</br>The Priority of the ToDo (0-10). |
+| `done`     | `boolean` | **Optional**.</br>**Default:** `false`.</br>The status of the ToDo.      |
 
 #### 📤 - Response
 
