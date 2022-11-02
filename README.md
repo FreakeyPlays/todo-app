@@ -21,6 +21,8 @@ foo@bar:~$ git clone https://github.com/FreakeyPlays/vs-lab.git
 
 - Client
   - [Agular](https://angular.io/docs)
+  - [Dragula](https://github.com/valor-software/ng2-dragula#readme)
+  - [yargs](https://yargs.js.org/)
 - Server
   - [NestJS](https://docs.nestjs.com/)
   - [Swagger](https://swagger.io/docs/)
@@ -32,7 +34,49 @@ foo@bar:~$ git clone https://github.com/FreakeyPlays/vs-lab.git
 .
 │   # The Angular Frontend
 ├── /client
-│   └── ...
+│   ├── /src
+│   │   ├── /app
+|   |   |   |   # Interfaces of different Objects
+│   │   |   ├── /_interface
+|   |   |   |   └── ...
+|   |   |   |
+|   |   |   |   # Connection to the Database
+│   │   |   ├── /_service
+|   |   |   |   └── ...
+|   |   |   |
+|   |   |   |   # Components witch get used more than once
+│   │   |   ├── /_template
+|   |   |   |   └── ...
+|   |   |   |
+|   |   |   |   # Bigger Components like whole sites
+|   |   |   ├── /...(components)
+|   |   |   |   └── ...
+|   |   |   |
+|   |   |   |   # App Component Files
+|   |   |   └── ...
+|   |   |
+│   │   ├── /assets
+|   |   |   |   # All fonts files
+│   │   |   ├── /font
+|   |   |   |   └── ...
+|   |   |   |
+|   |   |   |   # All svg Images
+│   │   |   └── /svg
+|   |   |       └── ...
+|   |   |   |
+|   |   |   # Different Environment files
+│   │   ├── /environment
+│   │   │   └── ...
+|   |   |
+|   |   |   # Sass Files (e.g. _var, _font, ...)
+│   │   ├── /sass
+|   |   |   └──...
+|   |   |
+|   |   |   # Angular starter Files and setEnv.ts
+|   |   └── ...
+|   |
+|   |   # Config Files for Angular
+|   └── ...
 │
 │   # The NestJS Backend
 ├── /server
@@ -68,14 +112,16 @@ foo@bar:~$ git clone https://github.com/FreakeyPlays/vs-lab.git
 
 ## 🧰 - Environment variables
 
-| Name                | Type     | Description                                                            | Deafault    |
-| :------------------ | :------- | :--------------------------------------------------------------------- | ----------- |
-| `HOST`              | `string` | The Host of the Application.</br>**Example:** `localhost or 127.0.0.1` | `localhost` |
-| `POSTGRES_PORT`     | `number` | The Port of the PostgresSQL Database.</br>**Example:** `4321`          | `5432`      |
-| `POSTGRES_USER`     | `string` | The Username of the PostgresSQL Database.</br>**Example:** `user`      | `postgres`  |
-| `POSTGRES_PASSWORD` | `string` | The Password of the PostgresSQL Database.</br>**Example:** `root`      | `password`  |
-| `POSTGRES_DB`       | `string` | The Name of the PostgresSQL Database.</br>**Example:** `todo_db`       | `postgres`  |
-| `NODE_ENV`          | `string` | The Name of the NodeJD Enviroment.</br>**Example:** `development`      |             |
+| Name                  | Type     | Description                                                                     | Default       |
+| :-------------------- | :------- | :------------------------------------------------------------------------------ | ------------- |
+| `DB_HOST_NAME`        | `string` | The Hostname of the Database Container.</br>**Example:** `postgres-db`          | `postgres-db` |
+| `POSTGRES_PORT`       | `number` | The Port of the PostgresSQL Database.</br>**Example:** `5432`                   | `5432`        |
+| `POSTGRES_USER`       | `string` | The Username of the PostgresSQL Database.</br>**Example:** `user`               | `postgres`    |
+| `POSTGRES_PASSWORD`   | `string` | The Password of the PostgresSQL Database.</br>**Example:** `root`               | `password`    |
+| `POSTGRES_DB`         | `string` | The Name of the PostgresSQL Database.</br>**Example:** `todo_db`                | `postgres`    |
+| `NODE_ENV`            | `string` | The Name of the NodeJD Environment.</br>**Example:** `development`              |               |
+| `SERVER_PORT`         | `number` | The Port of the Server Application.</br>**Example:** `5000`                     | `5000`        |
+| `NG_APP_DATABASE_URI` | `string` | The Connection String to the Database.</br>**Example:** `http://localhost:3000` |               |
 
 ## ⛓️ - API
 
