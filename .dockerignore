@@ -1,0 +1,4 @@
+*/node_modules
+client/e2e
+client/docs
+server/npm-debug.log
