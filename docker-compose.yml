@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  angular-frontend:
+    image: angular-frontend
+    env_file: ./.env
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.client
+    depends_on:
+      - nestjs-backend
+    ports:
+      - '8080:80'
+    networks:
+      - todo-app
+    restart: unless-stopped
+
+  nestjs-backend:
+    image: nestjs-backend
+    env_file: ./.env
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.server
+    depends_on:
+      - postgres-db
+    ports:
+      - '8081:5000'
+    networks:
+      - todo-app
+    restart: unless-stopped
+
+  postgres-db:
+    image: postgres:15
+    ports:
+      - '35000:5432'
+    env_file:
+      - ./.env
+    networks:
+      - todo-app
+    restart: unless-stopped
+
+networks:
+  todo-app:
+    driver: bridge
