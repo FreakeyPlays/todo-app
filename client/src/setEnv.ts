@@ -29,6 +29,28 @@ if (!existsSync(folderPath)) {
   mkdirSync(folderPath, { recursive: true })
 }
 
+const envFile = '/environment.ts'
+if (!existsSync(folderPath + envFile)) {
+  writeFile(folderPath + envFile, '', (err: any) => {
+    if (err) {
+      console.warn(err)
+      process.exit(-1)
+    }
+    console.log(`Created ${envFile} at ${targetPath}`)
+  })
+}
+
+const prodEnvFile = '/environment.prod.ts'
+if (!existsSync(folderPath + prodEnvFile)) {
+  writeFile(folderPath + prodEnvFile, '', (err: any) => {
+    if (err) {
+      console.warn(err)
+      process.exit(-1)
+    }
+    console.log(`Created ${prodEnvFile} at ${targetPath}`)
+  })
+}
+
 const targetPath = isProduction
   ? `${folderPath}/environment.prod.ts`
   : `${folderPath}/environment.ts`
