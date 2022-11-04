@@ -67,6 +67,7 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+client/src/environments
 
 # misc
 .angular/
