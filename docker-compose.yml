@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
 
   postgres-db:
-    image: postgres:15-alpine
+    image: postgres:15
     ports:
       - '35000:5432'
     env_file:
