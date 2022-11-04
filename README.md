@@ -15,8 +15,28 @@ When a ToDo gets checked of as done it moves to the Marked as Done ToDo list in 
 1. Clone the Git-Repository.
 
 ```
-foo@bar:~$ git clone https://github.com/FreakeyPlays/vs-lab.git
+git clone https://github.com/FreakeyPlays/vs-lab.git
 ```
+
+2. Install Docker, Docker-Compose and WSL2.<br>
+   [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+3. If `make` is not provided in your OS, install a custom make like GNUmake.<br>
+   [GNUmake](https://www.gnu.org/software/make/)
+
+4. Create the `.env` File in the Base Directory accoringly to the `.env.sample` File.<br/>
+   Read more at: [🧰 - Environment variables](#---environment-variables)
+5. Make sure you are in the Root Directory of the Repository, then build and run the Project using make.
+
+```
+make build
+```
+
+```
+make run
+```
+
+5. Now you can visit the Application via `http://localhost:8080`.
 
 ## 🛠️ - Tech Stack
 
@@ -84,16 +104,13 @@ foo@bar:~$ git clone https://github.com/FreakeyPlays/vs-lab.git
 │   ├── /src
 │   │   ├── /todo
 │   │   |   ├── /controller
-|   │   │   |   ├── todo.controller.spec.ts
-|   │   │   |   └── todo.controller.ts
+|   │   │   |   └── ...
 |   │   │   |
 │   │   |   ├── /models
-|   │   │   |   ├── todo.entity.ts
-|   │   │   |   └── todo.interface.ts
+|   │   │   |   └── ...
 |   │   │   |
 │   │   |   ├── /service
-|   │   │   |   ├── todo.service.spec.ts
-|   │   │   |   └── todo.service.ts
+|   │   │   |   └── ...
 |   │   │   |
 |   |   |   └── todo.module.ts
 |   │   │
@@ -113,16 +130,20 @@ foo@bar:~$ git clone https://github.com/FreakeyPlays/vs-lab.git
 
 ## 🧰 - Environment variables
 
-| Name                  | Type     | Description                                                                     | Default       |
-| :-------------------- | :------- | :------------------------------------------------------------------------------ | ------------- |
-| `DB_HOST_NAME`        | `string` | The Hostname of the Database Container.</br>**Example:** `postgres-db`          | `postgres-db` |
-| `POSTGRES_PORT`       | `number` | The Port of the PostgresSQL Database.</br>**Example:** `5432`                   | `5432`        |
-| `POSTGRES_USER`       | `string` | The Username of the PostgresSQL Database.</br>**Example:** `user`               | `postgres`    |
-| `POSTGRES_PASSWORD`   | `string` | The Password of the PostgresSQL Database.</br>**Example:** `root`               | `password`    |
-| `POSTGRES_DB`         | `string` | The Name of the PostgresSQL Database.</br>**Example:** `todo_db`                | `postgres`    |
-| `NODE_ENV`            | `string` | The Name of the NodeJD Environment.</br>**Example:** `development`              |               |
-| `SERVER_PORT`         | `number` | The Port of the Server Application.</br>**Example:** `5000`                     | `5000`        |
-| `NG_APP_DATABASE_URI` | `string` | The Connection String to the Database.</br>**Example:** `http://localhost:3000` |               |
+| Name                   | Type     | Description                                                                       | Default            |
+| :--------------------- | :------- | :-------------------------------------------------------------------------------- | ------------------ |
+| `NG_APP_DATABASE_URI`  | `string` | The Base URI String to the Database.</br>**Example:** `http://localhost`          | `http://localhost` |
+| `SERVER_PORT`          | `number` | The Port of the Server Application.</br>**Example:** `5000`                       | `3000`             |
+| `PGDB_HOST`            | `string` | The Hostname of the Database Container.</br>**Example:** `postgres-db`            | `postgres-db`      |
+| `POSTGRES_PORT`        | `number` | The Port of the PostgresSQL Database.</br>**Example:** `4321`                     | `5432`             |
+| `POSTGRES_USER`        | `string` | The Username of the PostgresSQL Database.</br>**Example:** `user`                 | `postgres`         |
+| `POSTGRES_PASSWORD`    | `string` | The Password of the PostgresSQL Database.</br>**Example:** `root`                 | `password`         |
+| `POSTGRES_DB`          | `string` | The Name of the PostgresSQL Database.</br>**Example:** `todo_db`                  | `postgres`         |
+| `NGINX_PORT`           | `number` | The Port of the NGINX server Environment.</br>**Example:** `480`                  | `80`               |
+| `DOCKER_CLIENT_PORT`   | `number` | The Port of the Client Container server Environment.</br>**Example:** `7200`      | `8080`             |
+| `DOCKER_SERVER_PORT`   | `number` | The Port of the Server Container server Environment.</br>**Example:** `6800`      | `8081`             |
+| `DOCKER_POSTGRES_PORT` | `number` | The Port of the PostgresDB Container server Environment.</br>**Example:** `39200` | `35000`            |
+| `NODE_ENV`             | `string` | The Name of the NodeJS Environment.</br>**Example:** `development`                |                    |
 
 ## ⛓️ - API
 
