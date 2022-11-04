@@ -1,4 +1,14 @@
-*/node_modules
+# Client Files/Folder
+
+client/node_modules
 client/e2e
 client/docs
+client/dist
+client/.angular
+client/.vscode
+
+# Server Files/Folder
+
+server/dist
+server/node_modules
 server/npm-debug.log
