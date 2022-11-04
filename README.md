@@ -147,7 +147,7 @@ make run
 
 ## ⛓️ - API
 
-To read more about the Todo API run the Project and visit `/api` to see the swagger documentation.
+To read more about the Todo API, run the Project and visit `/api` at port `8081`, to see the swagger documentation.
 
 <details open>
 <summary><h3>🔗 - createOneTodo<h3></summary>
