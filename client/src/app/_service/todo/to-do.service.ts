@@ -8,8 +8,9 @@ import { environment } from 'src/environments/environment'
   providedIn: 'root'
 })
 export class ToDoService {
-  private databaseUri =
-    environment.NG_APP_DATABASE_URI || 'http://localhost:8080'
+  private databaseUri = `${
+    environment.NG_APP_DATABASE_URI || 'http://localhost'
+  }:${environment.DOCKER_SERVER_PORT || '8081'}`
 
   constructor(private _httpClient: HttpClient) {}
 
