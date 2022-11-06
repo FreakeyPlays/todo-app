@@ -1,11 +1,5 @@
-build-server:
-	docker build -f Dockerfile.server -t nestjs-backend .
-
-build-client:
-	docker build -f Dockerfile.client -t angular-frontend .
-
 build:
-	make build-server && make build-client
+	docker-compose -f docker-compose.yml build
 
 run:
 	docker-compose -f docker-compose.yml up

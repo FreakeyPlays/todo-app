@@ -1,8 +1,11 @@
 FROM node:18.12.0-alpine AS node
 
+ARG DB_URI=http://localhost:8081
+
+ENV NG_APP_DATABASE_URI=$DB_URI
+
 WORKDIR /usr/src/app
 
-COPY .env ./../
 COPY ./client .
 
 RUN npm install
