@@ -27,6 +27,10 @@ export class TemplateTodoFormComponent implements OnInit {
   ngOnInit(): void {}
 
   public createNewToDo(e?: Event): void {
+    if (this.newToDo.label.length <= 0) {
+      return
+    }
+
     if (typeof this.newToDo.priority === 'string') {
       this.newToDo.priority = parseInt(this.newToDo.priority)
     }
