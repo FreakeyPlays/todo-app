@@ -1,25 +1,11 @@
 const { writeFile, readFileSync, existsSync, mkdirSync } = require('fs')
 const { argv } = require('yargs')
 const path = require('path')
+require('dotenv').config()
 
-const environmentVariablesInKeyValuePairs = readFileSync(
-  path.resolve(__dirname, '../../.env'),
-  {
-    encoding: 'utf-8'
-  }
+const environmentVariablesInKeyValuePairs = Object.fromEntries(
+  Object.entries(process.env).filter(([key]) => key.startsWith('NG_APP_'))
 )
-  .split('\n')
-  .map((value: string): string => {
-    return value.replace('\r', '')
-  })
-  .filter((value: string): boolean => {
-    return value != ''
-  })
-  .map((keyValuePair: string): string[] => {
-    return keyValuePair.split('=').map((value: string): string => {
-      return value.trim()
-    })
-  })
 
 const environment = argv.environment
 const isProduction = environment === 'prod'
@@ -36,7 +22,7 @@ if (!existsSync(folderPath + envFile)) {
       console.warn(err)
       process.exit(-1)
     }
-    console.log(`Created ${envFile} at ${targetPath}`)
+    console.log(`Created ${envFile} at ${folderPath}`)
   })
 }
 
@@ -47,7 +33,7 @@ if (!existsSync(folderPath + prodEnvFile)) {
       console.warn(err)
       process.exit(-1)
     }
-    console.log(`Created ${prodEnvFile} at ${targetPath}`)
+    console.log(`Created ${prodEnvFile} at ${folderPath}`)
   })
 }
 
@@ -57,8 +43,12 @@ const targetPath = isProduction
 
 let environmentFileContent = `export const environment = {\n  production: ${isProduction}`
 
-for (let keyValuePair of environmentVariablesInKeyValuePairs) {
-  environmentFileContent += `,\n  ${keyValuePair[0]}: ${keyValuePair[1]}`
+for (const [key, value] of Object.entries(
+  environmentVariablesInKeyValuePairs
+)) {
+  environmentFileContent += `,\n  ${key}: ${
+    typeof value === 'string' ? '"' + value + '"' : value
+  }`
 }
 
 environmentFileContent += '\n}'
