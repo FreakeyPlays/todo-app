@@ -6,6 +6,8 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile.client
+      args:
+        DB_URI: '${NG_APP_DATABASE_URI}'
     depends_on:
       - nestjs-backend
     ports:
