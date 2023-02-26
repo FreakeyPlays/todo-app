@@ -1,6 +1,5 @@
-<h1 align="center">VS-Lab (Todo App)</h1>
+<h1 align="center">Todo App</h1>
 
-<p align="center">This Todo App was made in the Distributed and Parallel systems course at HS-Esslingen.</p>
 <img src="https://user-images.githubusercontent.com/78086475/199973621-69495a54-9570-4d96-8ef5-75b7a885f851.png" alt="Preview Image of the ToDo-App"></img>
 
 ## 📌 - Description
@@ -15,7 +14,7 @@ When a ToDo gets checked of as done it moves to the Marked as Done ToDo list in 
 1. Clone the Git-Repository.
 
 ```
-git clone https://github.com/FreakeyPlays/vs-lab.git
+git clone https://github.com/FreakeyPlays/todo-app.git
 ```
 
 2. Install Docker, Docker-Compose and WSL2.<br>

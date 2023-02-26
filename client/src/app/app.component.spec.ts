@@ -19,7 +19,7 @@ describe('AppComponent', () => {
   it(`should have as title 'client'`, () => {
     const fixture = TestBed.createComponent(AppComponent)
     const app = fixture.componentInstance
-    expect(app.title).toEqual('VS-Lab Todo')
+    expect(app.title).toEqual('Todo')
   })
 
   it('should render title', () => {
@@ -27,7 +27,7 @@ describe('AppComponent', () => {
     fixture.detectChanges()
     const compiled = fixture.nativeElement as HTMLElement
     expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'VS-Lab Todo app is running!'
+      'Todo app is running!'
     )
   })
 })
