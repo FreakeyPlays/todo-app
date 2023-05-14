@@ -1,4 +1,9 @@
 describe('Initial Page load', () => {
+  before(() => {
+    cy.visit('http://localhost:8080/')
+    cy.deleteAllTodos()
+  })
+
   beforeEach(() => {
     cy.visit('http://localhost:8080/')
   })
@@ -51,5 +56,77 @@ describe('Initial Page load', () => {
       .each($el => {
         cy.wrap($el).children().should('have.length', 0)
       })
+  })
+})
+
+describe('ToDo Functionality', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:8080/')
+  })
+
+  it('can`t create a ToDo without Label', () => {
+    cy.get('app-template-todo-form div.todo-create').click()
+    cy.get('app-template-todo').should('not.exist')
+  })
+
+  it('creates a ToDo', () => {
+    cy.createTodo('The first ToDo', 5, false)
+      .get('app-template-todo')
+      .should('exist')
+      .and('be.visible')
+  })
+
+  it('marks a ToDo to Done', () => {
+    cy.get('app-template-todo').find('div.todo-status-check').click()
+
+    cy.get('div.todo-entry-list').should($el => {
+      expect($el.eq(0).children()).to.have.length(0)
+      expect($el.eq(1).children()).to.have.length(1)
+    })
+  })
+
+  it('marks a ToDo to Open', () => {
+    cy.get('app-template-todo').find('div.todo-status-check').click()
+
+    cy.get('div.todo-entry-list').should($el => {
+      expect($el.eq(0).children()).to.have.length(1)
+      expect($el.eq(1).children()).to.have.length(0)
+    })
+  })
+
+  it("updates a ToDo's priority", () => {
+    cy.get('app-template-todo')
+      .find('div.todo-content-inputs')
+      .dblclick()
+      .find('select')
+      .select(8)
+
+    cy.get('app-template-todo').find('div.todo-update').click()
+
+    cy.get('app-template-todo').find('select').should('contain', '8')
+  })
+
+  it("updates a ToDo's Label", () => {
+    cy.get('app-template-todo')
+      .find('div.todo-content-inputs')
+      .dblclick()
+      .find('input[type="text"]')
+      .clear()
+      .type('The first ToDo has a new Label')
+
+    cy.get('app-template-todo').find('div.todo-update').click()
+
+    cy.get('app-template-todo')
+      .find('input[type="text"]')
+      .should('have.value', 'The first ToDo has a new Label')
+  })
+
+  it('deletes a ToDo', () => {
+    cy.get('app-template-todo').find('div.todo-delete').click()
+
+    cy.get('div.todo-entry-list').should($el => {
+      expect($el.eq(0).children()).to.have.length(0)
+      expect($el.eq(1).children()).to.have.length(0)
+    })
   })
 })
