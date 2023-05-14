@@ -1,6 +1,6 @@
 describe('Initial Page load', () => {
   before(() => {
-    cy.visit('http://localhost:8080/')
+    cy.visit('http://localhost:8080/').wait(1000)
     cy.deleteAllTodos()
   })
 
@@ -128,5 +128,16 @@ describe('ToDo Functionality', () => {
       expect($el.eq(0).children()).to.have.length(0)
       expect($el.eq(1).children()).to.have.length(0)
     })
+  })
+
+  context('With many ToDos', () => {
+    // beforeAll(() => {})
+
+    // afterAll(() => {
+    //   cy.deleteAllTodos()
+    // })
+
+    it('moves a ToDo in the List', () => {})
+    it('hides a List', () => {})
   })
 })
