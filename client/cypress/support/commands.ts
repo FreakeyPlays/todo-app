@@ -36,7 +36,7 @@ Cypress.Commands.add(
 Cypress.Commands.add('deleteAllTodos', () => {
   cy.get('app-template-todo')
     .should('have.length.at.least', 0)
-    .each($todo => {
-      cy.wrap($todo).find('div.todo-delete').click()
+    .each($el => {
+      cy.wrap($el).find('div.todo-delete').click()
     })
 })
