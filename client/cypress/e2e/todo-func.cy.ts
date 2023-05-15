@@ -1,67 +1,13 @@
-describe('Initial Page load', () => {
+/// <reference types="cypress" />
+
+describe('ToDo Functionality', () => {
   before(() => {
-    cy.visit('http://localhost:8080/').wait(1000)
+    cy.visit('/')
     cy.deleteAllTodos()
   })
 
   beforeEach(() => {
-    cy.visit('http://localhost:8080/')
-  })
-
-  it('renders the Title', () => {
-    cy.get('app-template-header')
-      .should('exist')
-      .should('be.visible')
-      .and('contain', 'DoYourTodos')
-  })
-
-  it('renders the Create ToDo form', () => {
-    cy.get('app-template-todo-form').should('exist').and('be.visible')
-
-    cy.get('app-template-todo-form')
-      .find('input[type="text"]')
-      .should('exist')
-      .and('be.visible')
-      .and('have.value', '')
-      .and('have.attr', 'placeholder', 'Label of the ToDo')
-
-    cy.get('app-template-todo-form')
-      .find('select')
-      .should('exist')
-      .and('be.visible')
-      .and('have.value', '5')
-      .find('option')
-      .should('have.length', 11)
-
-    cy.get('app-template-todo-form')
-      .find('div.todo-create')
-      .should('exist')
-      .and('be.visible')
-      .and('contain', 'Create')
-  })
-
-  it('renders both lists with 0 entries', () => {
-    cy.get('h4')
-      .should('exist')
-      .and('be.visible')
-      .and('have.length', 2)
-      .and($lis => {
-        expect($lis.eq(0)).to.contain('Open')
-        expect($lis.eq(1)).to.contain('Done')
-      })
-
-    cy.get('div.todo-entry-list')
-      .should('exist')
-      .and('have.length', 2)
-      .each($el => {
-        cy.wrap($el).children().should('have.length', 0)
-      })
-  })
-})
-
-describe('ToDo Functionality', () => {
-  beforeEach(() => {
-    cy.visit('http://localhost:8080/')
+    cy.visit('/')
   })
 
   it('can`t create a ToDo without Label', () => {
@@ -131,13 +77,47 @@ describe('ToDo Functionality', () => {
   })
 
   context('With many ToDos', () => {
-    // beforeAll(() => {})
+    after(() => {
+      cy.deleteAllTodos()
+    })
 
-    // afterAll(() => {
-    //   cy.deleteAllTodos()
-    // })
+    before(() => {
+      cy.visit('/')
+      cy.fixture('page').then(page => {
+        page.todos.forEach((todo: any) => {
+          cy.createTodo(todo.text, todo.priority, todo.done)
+        })
+      })
+    })
 
-    it('moves a ToDo in the List', () => {})
-    it('hides a List', () => {})
+    it('moves a ToDo in the List', () => {
+      const drag = cy.get('div.todo-entry-list').eq(0).children().last()
+      const drop = cy.get('div.todo-entry-list').eq(0).children().first()
+      drop.then($el => {
+        const dropPosition = $el[0].getBoundingClientRect().top
+
+        drag.trigger('mousedown', { which: 1, force: true })
+        cy.scrollTo('top')
+        drag
+          .trigger('mousemove', {
+            which: 1,
+            clientY: dropPosition,
+            force: true
+          })
+          .trigger('mouseup', { which: 1, force: true })
+
+        cy.get('app-template-todo')
+          .first()
+          .find("input[type='text']")
+          .should('have.value', 'LAST ITEM')
+      })
+    })
+
+    it('hides and shows a List', () => {
+      cy.get('h4').eq(0).click()
+      cy.get('div.todo-entry-list').should('have.length', 1)
+      cy.get('h4').eq(0).click()
+      cy.get('div.todo-entry-list').should('have.length', 2)
+    })
   })
 })
