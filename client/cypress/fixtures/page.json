@@ -1,4 +1,61 @@
 {
-  "url": "http://localhost:8080/",
-  "title": "ToDo App"
+  "todo": {
+    "label": "The first ToDo",
+    "label_updated": "The first ToDo has a new Label",
+    "priority": 5,
+    "priority_updated": 10,
+    "done": false
+  },
+  "todos": [
+    {
+      "text": "Create a Testing Environment",
+      "priority": 4,
+      "done": false
+    },
+    {
+      "text": "Create a Application to Test",
+      "priority": 1,
+      "done": false
+    },
+    {
+      "text": "Create a some Use Cases",
+      "priority": 5,
+      "done": false
+    },
+    {
+      "text": "Write  Documentation",
+      "priority": 9,
+      "done": false
+    },
+    {
+      "text": "Have fun",
+      "priority": 6,
+      "done": false
+    },
+    {
+      "text": "Learn something new",
+      "priority": 8,
+      "done": false
+    },
+    {
+      "text": "Finally Test",
+      "priority": 3,
+      "done": false
+    },
+    {
+      "text": "Watch Youtube",
+      "priority": 2,
+      "done": false
+    },
+    {
+      "text": "Watch Netflix",
+      "priority": 10,
+      "done": false
+    },
+    {
+      "text": "LAST ITEM",
+      "priority": 7,
+      "done": false
+    }
+  ]
 }
