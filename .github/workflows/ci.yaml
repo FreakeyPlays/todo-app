@@ -18,7 +18,6 @@ jobs:
         uses: cypress-io/github-action@v5.7.2
         with:
           browser: chrome
-          working-directory: client/
 
       - name: Stop Container
         run: docker-compose down
