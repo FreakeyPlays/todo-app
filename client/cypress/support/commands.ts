@@ -10,6 +10,7 @@ declare global {
         done: boolean
       ): Chainable<void>
       deleteAllTodos(): Chainable<void>
+      clearDB(): Chainable<void>
     }
   }
 }
@@ -39,4 +40,8 @@ Cypress.Commands.add('deleteAllTodos', () => {
     .each($el => {
       cy.wrap($el).find('div.todo-delete').click()
     })
+})
+
+Cypress.Commands.add('clearDB', () => {
+  cy.request('DELETE', Cypress.env('DB_URL') + '/todo/remove/all')
 })
