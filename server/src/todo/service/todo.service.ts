@@ -30,4 +30,8 @@ export class TodoService {
   async removeOne(id: number): Promise<DeleteResult> {
     return this.todoRepository.delete(id)
   }
+
+  async removeAll() {
+    return this.todoRepository.clear()
+  }
 }
