@@ -283,3 +283,21 @@ DELETE /todo/{id}
 ```
 
 </details>
+
+<details>
+<summary><h3>🔗 - deleteAllTodos<h3></summary>
+
+#### 📥 - Reqest
+
+```http
+DELETE /todo/remove/all
+```
+
+#### 📤 - Response
+
+```javascript
+{
+}
+```
+
+</details>

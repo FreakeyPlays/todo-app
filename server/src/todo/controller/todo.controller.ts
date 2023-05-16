@@ -122,4 +122,15 @@ export class TodoController {
   public deleteTodo(@Param('id') id: number): Promise<DeleteResult> {
     return this.service.removeOne(id)
   }
+
+  @Delete("/remove/all")
+  @ApiOperation({ summary: 'Deletes all ToDos from Database.' })
+  @ApiOkResponse({ description: 'All ToDos was Deleted from the Database' })
+  @ApiAcceptedResponse({ description: 'All ToDos will be Deleted from Database' })
+  @ApiNoContentResponse({
+    description: 'All ToDos are Deleted from the Database, but got no Response'
+  })
+  public deleteAllTodo() {
+    return this.service.removeAll()
+  }
 }

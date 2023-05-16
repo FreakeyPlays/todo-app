@@ -1,0 +1,27 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  cypress:
+    name: 🧪 E2E - Testing
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Build Container
+        run: mv .env.sample .env && docker-compose up -d
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v5.7.2
+        with:
+          browser: chrome
+
+      - name: Stop Container
+        run: docker-compose down
