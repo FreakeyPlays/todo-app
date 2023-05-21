@@ -79,3 +79,11 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+
+# test summary
+k6/summary.json
+k6/summary.html
+
+# test output
+cypress/videos
+cypress/screenshots
