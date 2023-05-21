@@ -50,5 +50,5 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: k6-Summary  
-          path: k6/summary.* 
+          path: summary.* 
           retention-days: 2
