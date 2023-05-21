@@ -40,7 +40,7 @@ jobs:
       - name: Run k6 Tests
         uses: grafana/k6-action@v0.3.0
         with:
-          file: /k6/main.js
+          filename: k6/main.js
           flags: --summary-export=summary.json
         env:
           STAGE: dev
