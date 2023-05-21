@@ -43,3 +43,9 @@ jobs:
           STAGE: prod
           TYPE: smoke
           
+      - name: Deploy Summary
+        uses: actions/upload-artifact@v2
+        with:
+          name: summary  
+          path: k6/summary.html  
+          retention-days: 2  
