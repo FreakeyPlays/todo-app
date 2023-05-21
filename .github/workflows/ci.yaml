@@ -29,6 +29,9 @@ jobs:
   k6:
     name: 🧪 Stress - Testing
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./k6
 
     steps:
       - name: Checkout Code
@@ -43,9 +46,9 @@ jobs:
           STAGE: prod
           TYPE: smoke
           
-      - name: Deploy Summary
+      - name: Upload Summary
         uses: actions/upload-artifact@v3.1.2
         with:
           name: k6-Summary  
-          path: k6/summary.html  
+          path: k6/summary.* 
           retention-days: 2
